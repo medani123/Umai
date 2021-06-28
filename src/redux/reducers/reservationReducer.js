@@ -6,7 +6,6 @@ import {
   UPDATE_RESERVATION,
   RESERVATION_UPDATED,
   SET_FILTER_DATE,
-  //FINISHED_STATE,
 } from "../constants/ActionTypes";
 
 const initialState = {

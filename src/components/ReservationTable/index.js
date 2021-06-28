@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   UPDATE_RESERVATION,
   SET_FILTER_DATE,
-  ADD_RESERVATION,
-  RESERVATION_UPDATED,
 } from "../../redux/constants/ActionTypes";
 import moment from "moment";
 import PropTypes from "prop-types";
