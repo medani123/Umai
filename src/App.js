@@ -1,58 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import Grid from "@material-ui/core/Grid";
+import withWidth from "@material-ui/core/withWidth";
+import LandingPage from "./pages/LandingPage";
+import AddPage from "./pages/AddPage";
+import store from "./redux/store/configureStore";
+import "./App.css";
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Grid container>
+      <Provider store={store}>
+        <Router>
+          <Route exact path='/' component={LandingPage} />
+          <Route exact path='/new' component={AddPage} />
+        </Router>
+      </Provider>
+    </Grid>
   );
 }
 
-export default App;
+App.propTypes = {
+  width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+};
+
+export default withWidth()(App);
